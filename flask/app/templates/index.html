@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block title %}{{ vars.title }}{% endblock %}
+
+{% block content %}
+    <main>
+        <h1 class="title">{{ vars.title }}</h1>
+        {% if vars.postQuery.count() %}
+            {% set css = 'button is-small' %}
+            {% for post in vars.postQuery %}
+                <div class="post content">
+                    <div class="post-content">
+                        <h2 class="title">{{ post.title }}</h2>
+                        {{ post.content|formatContent|safe }}
+                    </div>
+                    <div class="post-meta">
+                        {{ post.pubDateTime|formatStamp }} 
+                        <span>|</span> 
+                        <a class="{{ css }}" href="{{ url_for('editPost', id=post.id) }}">edit</a>
+                        <a class="{{ css }}" href="{{ url_for('deletePost', id=post.id) }}">delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No posts found.</p>
+        {% endif %}
+    </main>
+{% endblock content %}

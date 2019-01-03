@@ -1,0 +1,12 @@
+version: 1
+task_definition:
+    services:
+        flask:
+            cpu_shares: 30
+            mem_limit: 250000000 # 524288000
+        nginx:
+            cpu_shares: 30
+            mem_limit: 250000000  # 524288000
+        mysql:
+            cpu_shares: 30
+            mem_limit: 250000000  # 524288000

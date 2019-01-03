@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block title %}{{ vars.title }}{% endblock %}
+
+
+{% block content %}
+    <main>
+        <h1 class="title">{{ vars.title }}</h1>
+        {{ vars.body }}
+    </main>
+{% endblock content %}

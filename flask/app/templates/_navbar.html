@@ -1,0 +1,16 @@
+<nav class="navbar is-primary">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="{{ url_for('home') }}">docker1</a>
+        <a class="navbar-burger burger" data-target="(id of smart menu)">
+            <span></span>
+            <span></span>
+        </a>
+    </div>
+    
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="{{ url_for('addPost') }}">Add Post</a>
+            <a class="navbar-item" href="{{ url_for('hello', name='Betty') }}">Hello Betty</a>
+        </div>
+    </div>
+</nav>

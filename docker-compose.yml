@@ -1,0 +1,52 @@
+version: "3"
+services:
+
+    mysql:
+        container_name: mysql_c
+        image: jbrudolf/flud-mysql
+        build: ./mysql
+        ports:
+            - "3306:3306"
+        logging:
+            driver: awslogs
+            options: 
+                awslogs-group: flud-mysql
+                awslogs-region: eu-west-3
+                awslogs-stream-prefix: mysql
+            
+    flask:
+        container_name: flask_c
+        image: jbrudolf/flud-flask
+        build: ./flask
+        ports:
+            - "8000:8000"
+        links:  # legacy feature, but required for ECS
+            - mysql
+        volumes:
+            - staticvol:/app/app/static
+        logging:
+            driver: awslogs
+            options: 
+                awslogs-group: flud-flask
+                awslogs-region: eu-west-3
+                awslogs-stream-prefix: flask
+            
+    nginx:
+        container_name: nginx_c
+        image: jbrudolf/flud-nginx
+        build: ./nginx
+        ports:
+            - "80:80"
+        links:  # legacy feature, but required for ECS
+            - flask
+        volumes:
+            - staticvol:/var/static:ro
+        logging:
+            driver: awslogs
+            options: 
+                awslogs-group: flud-nginx
+                awslogs-region: eu-west-3
+                awslogs-stream-prefix: nginx
+
+volumes:
+    staticvol:

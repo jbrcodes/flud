@@ -1,0 +1,40 @@
+/* style.css */
+
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 1em 0 1em 0;
+}
+
+/* ----- bulma ----- */
+
+.container {
+    padding: 0 10px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* ----- posts ----- */
+
+.post {
+    margin: 2em 0;
+}
+
+.post h2 {
+    border-bottom: 1px solid #ccc;
+}
+
+.post-meta {
+    font-size: 90%;
+    margin: 1em 0;
+}
+
+.post-meta * {
+    display: inline-block;
+    margin-left: 10px;
+}
