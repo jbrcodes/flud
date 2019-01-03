@@ -1,2 +1,6 @@
 # flud
-A simple 3-container Docker/AWS exercise 
+A simple Docker/AWS exercise with 3 containers:
+
+- Flask/Gunicorn, implementing CRUD behavior
+- NGINX as proxy server and serving static content
+- MySQL
